@@ -7,19 +7,19 @@ using namespace std;
 
 class Subset{
 private:
-	int weight;
+	float weight;
 	int currentSize;
 	vector<int> elementos;
 
 public:
 	//Construtores
 	Subset();
-	Subset(int, int);
+	Subset(float, int);
 
 	//Métodos acessores
 
-	void setWeight(int);
-	int getWeight();
+	void setWeight(float);
+	float getWeight();
 	void setCurrentSize(int);
 	int getCurrentSize();
 	void setElementos(vector<int>);
@@ -27,6 +27,7 @@ public:
 
 	// Métodos necessários
 	void decrementSize();
+	void incrementSize();
 	void adicionaElemento(int);
 	int returnElement(int);
 	int returnElementSize();

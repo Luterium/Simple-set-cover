@@ -14,6 +14,5 @@ int main(){
     }*/
 
     trataInput();
-    cout << "printy b o i" << endl;
     return 0;
 };

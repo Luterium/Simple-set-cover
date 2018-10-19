@@ -2,18 +2,20 @@
 
 using namespace std;
 
-Subset::Subset(){}
+Subset::Subset(){
+    currentSize = 0;
+}
 
-Subset::Subset(int weight, int size){
+Subset::Subset(float weight, int size){
 	this->weight = weight;
 	currentSize = size;
 }
 
-void Subset::setWeight(int weight){
+void Subset::setWeight(float weight){
 	this->weight = weight;
 }
 
-int Subset::getWeight(){
+float Subset::getWeight(){
 	return weight;
 }
 
@@ -32,6 +34,10 @@ void Subset::setElementos(vector <int> ele){
 
 vector<int> Subset::getElementos(){
     return elementos;
+}
+
+void Subset::incrementSize(){
+    currentSize++;
 }
 
 void Subset::decrementSize(){
