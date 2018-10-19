@@ -73,4 +73,5 @@ void trataInput(){
         matrizElementos[i].clear();
     }
     matrizElementos.clear();
+    inputSCP.close();
 }
