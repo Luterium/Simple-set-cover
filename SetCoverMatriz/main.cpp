@@ -12,7 +12,8 @@ int main(){
     for(int i = 0; i < teste->returnElementSize(); i++){
         cout << teste->returnElement(i) << " ";
     }*/
+
     trataInput();
-    cout << endl;
+    cout << "printy b o i" << endl;
     return 0;
 };
