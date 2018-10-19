@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1539920591 source:c:\users\nicholas\documents\github\simple-set-cover\setcovermatriz\main.cpp
+	<iostream>
+	"subconjunto.h"
+
+1539920600 c:\users\nicholas\documents\github\simple-set-cover\setcovermatriz\subconjunto.h
+	<iostream>
+	<vector>
+
+1539904441 source:c:\users\nicholas\documents\github\simple-set-cover\setcovermatriz\subconjunto.cpp
+	"subconjunto.h"
+
+1539920568 source:c:\users\nicholas\documents\github\simple-set-cover\setcovermatriz\tratainput.cpp
+	<iostream>
+	<fstream>
+	"subconjunto.h"
+

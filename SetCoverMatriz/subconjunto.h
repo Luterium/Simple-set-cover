@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+void trataInput();
 using namespace std;
 
 class Subset{
