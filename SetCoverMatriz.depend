@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1539904363 source:c:\users\nicholas\documents\!nicholas\c++\set cover\setcovermatriz\main.cpp
+	<iostream>
+	"subconjunto.h"
+
+1539904441 source:c:\users\nicholas\documents\!nicholas\c++\set cover\setcovermatriz\subconjunto.cpp
+	"subconjunto.h"
+
+1539904442 c:\users\nicholas\documents\!nicholas\c++\set cover\setcovermatriz\subconjunto.h
+	<iostream>
+	<vector>
+
