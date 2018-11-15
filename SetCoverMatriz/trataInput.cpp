@@ -6,17 +6,25 @@
 using namespace std;
 
 
-int returnIndiceMin(Subset Subsets[], int m, float& totalWeight){
+int returnIndiceMin(Subset Subsets[], int m, float& totalWeight, vector <int>& subconjuntosEscolhidos){
     float currentWeight = Subsets[0].getWeight()/Subsets[0].getCurrentSize();
     int currentWeightIndex = 0;
+    int currentWeightSize = 0;
     for (int i = 1; i < m; i++){
         if (currentWeight > Subsets[i].getWeight()/Subsets[i].getCurrentSize()){
             currentWeightIndex = i;
             currentWeight = Subsets[i].getWeight()/Subsets[i].getCurrentSize();
+            currentWeightSize = Subsets[i].getCurrentSize();
+        }
+        else if(currentWeight == Subsets[i].getWeight()/Subsets[i].getCurrentSize() && currentWeightSize < Subsets[i].getCurrentSize())
+        {
+            currentWeightIndex = i;
+            currentWeight = Subsets[i].getWeight()/Subsets[i].getCurrentSize();
+            currentWeightSize = Subsets[i].getCurrentSize();
         }
     }
     totalWeight += Subsets[currentWeightIndex].getWeight();
-    Subsets[currentWeightIndex].setWeight(1000);
+    subconjuntosEscolhidos.push_back(currentWeightIndex);
     return currentWeightIndex;
 }
 
@@ -29,11 +37,11 @@ void workColumn(vector<vector <bool> >& matrizElementos, Subset Subsets[], int m
     }
 }
 
-void workMatrix(vector<vector <bool> >& matrizElementos,vector<bool>& elementosCobertos, Subset Subsets[], int m, int n, int indiceMin){
+void workMatrix(vector<vector <bool> >& matrizElementos,int& elementosDescobertos, Subset Subsets[], int m, int n, int indiceMin){
     for(int i = 0; i < n; i++){
         if (matrizElementos[indiceMin][i] == true){
             workColumn(matrizElementos, Subsets, m, i);
-            elementosCobertos.pop_back();
+            elementosDescobertos--;
         }
     }
 }
@@ -48,7 +56,8 @@ void trataInput(){
     inputSCP >> n >> m;
     Subset Subsets[m];
     vector < vector<bool> > matrizElementos(m,vector<bool>(n,false));
-    vector <bool> elementosCobertos(n, false);
+    int elementosDescobertos = n;
+    vector <int> subconjuntosEscolhidos;
 
     for(int i = 0; i < m; i++){
         inputSCP >> auxWeight;
@@ -63,11 +72,14 @@ void trataInput(){
             matrizElementos[auxElemento-1][i] = true;
         }
     }
-
-    while(elementosCobertos.size())
-    workMatrix(matrizElementos, elementosCobertos, Subsets, m, n, returnIndiceMin(Subsets, m, totalWeight));
+    while(elementosDescobertos)
+    workMatrix(matrizElementos, elementosDescobertos, Subsets, m, n, returnIndiceMin(Subsets, m, totalWeight, subconjuntosEscolhidos));
 
     cout << "Total cover cost: " << totalWeight << endl << endl;
+    cout << "Subconjuntos escolhidos: ";
+    for(unsigned int i = 0; i < subconjuntosEscolhidos.size(); i++){
+        cout << subconjuntosEscolhidos[i]+1 << " ";
+    }
 
     for(int i = 0; i < m; i++){
         matrizElementos[i].clear();
